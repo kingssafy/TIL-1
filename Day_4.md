@@ -277,7 +277,7 @@ app.run(host="0.0.0.0", port=8080, debug=True)
 >
 > `url_for()` 는 route 주소로 이동하는 것이 아닌 정의된 **함수**를 호출한다. 
 >
-> `flasing messages` 은 기본적으로 요청의 끝에 메시지를 기록하고 그 다음 요청에서만 그 메시지에 접근할 수 있게 한다. 
+> `flasing messages` 은 기본적으로 요청의 끝에 메시지를 기록하고 그 다음 요청에서만 그 메시지에 접근할 수 있게 한다. [doc](http://flask.pocoo.org/docs/1.0/patterns/flashing/)
 
 - `sowhan.html`
 
@@ -303,27 +303,31 @@ from flask import Flask, render_template, request, url_for, redirect, flash
 
 ...
 
+@app.route("/sohwan")
+def sohwan():
+    return render_template("sohwan.html")
+    
 @app.route("/summoner")
 def summoner():
     name = request.args.get('name')
-    req = requests.get(f"http://www.op.gg/summoner/userName={name}").text
+    url = f"http://www.op.gg/summoner/userName={name}"
+    req = requests.get(url).text
     soup = BeautifulSoup(req, "html.parser")
     summoner = soup.select_one("body > div.l-wrap.l-wrap--summoner > div.l-container > div > div > div.Header > div.Profile > div.Information > span")
     wins = soup.select_one("#SummonerLayoutContent > div.tabItem.Content.SummonerLayoutContent.summonerLayout-summary > div.SideContent > div.TierBox.Box > div.SummonerRatingMedium > div.TierRankInfo > div.TierInfo > span.WinLose > span.wins")
-    tier = soup.select_one("#SummonerLayoutContent > div.tabItem.Content.SummonerLayoutContent.summonerLayout-summary > div.SideContent > div.TierBox.Box > div.SummonerRatingMedium > div.TierRankInfo > div.TierRank > span")
+    tier = soup.select_one("#SummonerLayoutContent > div.tabItem.Content.SummonerLayoutContent.summonerLayout-summary > div.SideContent > div.TierBox.Box > div > div.TierRankInfo > div > span")
     
-    if summoner:
-        if tier.text == "Unranked":
-            flash(f"{name} 은(는) 랭크 전적이 없습니다!!")
-            return redirect(url_for('sohwan'))
-        else:
-            return render_template("opgg.html", name=name, wins=wins.text, tier=tier.text)		# 티어도 추가
-    else:
-        flash(f"{name} 은(는) 존재하지않는 소환사입니다!!")
+    if summoner and tier.text == "Unranked":
+        flash(f"{name} 소환사는 랭크 전적이 없습니다.")
         return redirect(url_for('sohwan'))
-    
+    elif summoner:
+        return render_template("opgg.html", name=name, wins=wins.text)
+    else:
+        flash(f"{name} 소환사가 없습니다.")
+        return redirect(url_for('sohwan'))
+
 if __name__ == "__main__":
-    app.secret_key = 'super_secret_key'		 # flash 메세지 사용을 위한 설정 (key 값 자유)
+    app.secret_key = "Super_secret_key"			
     app.run(host="0.0.0.0", port=8080, debug=True)
 ```
 
