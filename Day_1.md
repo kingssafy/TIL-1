@@ -67,7 +67,7 @@ for i in range(3):
 
 #### 3) List
 
-- `list`는 배열 또는 array라고도 불린다. 인덱스를 통해 값에 접근할 수 있다.
+- `list`는 배열 (다른 언어에서는 array 라고 불린다) 이다. index 를 통해 값에 접근할 수 있다.
 
 ```python
 menu = ["중국집", "초밥", "고기", "분식"]
@@ -98,7 +98,7 @@ print(a)
 
 #### 4) Dictionary
 
-`Dictionary` 는 hash(해시)라고도 불린다. `key`와 `value`가 짝지어져있다.
+`Dictionary` 는 (다른 언어에서는 hash 라고도 불린다.) `key`와 `value`가 짝지어져있다.
 
 ```python
 phonebook = {
@@ -145,7 +145,7 @@ print("오늘의 점심은 {}입니다.".format(lunch))
 print(f"오늘의 점심은 {lunch}입니다.")
 ```
 
-3-3. 딕셔너리 활용하기 - 커피 + 사진
+3-3. 딕셔너리 활용하기 - 식당 + 전화번호
 
 ```python
 import random
@@ -168,7 +168,7 @@ phonebook = {'이화수전통육개장 대전한밭대점': '050-6209-2300',
 print(phonebook[choice])
 ```
 
-3-4. 조건문 활용하기 - 미세먼지
+3-4. 조건문 활용하기 - 미세먼지 데이터
 
 ```python
 import requests
@@ -196,7 +196,7 @@ else:
   print("좋음")
 ```
 
-3-5. 반복문 활용하기 - 여러번인사
+3-5. 반복문 활용하기 - 여러번 인사하기
 
 ```python
 greeting = "안녕하세요??"
@@ -208,7 +208,7 @@ for i in range(5):
 - 웹 API 란?
   - 미세먼지 데이터 살펴보기
 
-3-6. 외장함수 - 로또
+3-6. 외장함수 `random` - 로또
 
 ```python
 import random
@@ -313,10 +313,9 @@ $ git push -u origin master							# 첫 push 이후로는 git push 만 입력
 ```bash
 $ git init
 student@DESKTOP MINGW64 ~/Desktop/TIL (master)
-$
 ```
 
-**주의!! 반드시 현재 디렉토리에 git을 사용하고 있는지, (master) 있는지 확인 할 것**
+**주의!! 반드시 현재 디렉토리에 git을 사용하고 있는지, (master) 표기가 생겼는지 확인 할 것**
 
 #### 2. git add
 
@@ -334,7 +333,7 @@ $ git add .
 
 #### 3. git commit
 
-`git commit`은 현재 소스코드 상태를 스냅샷을 찍는 것과 동일하다.
+`git commit`은 현재 소스코드 상태를 **스냅샷**을 찍는 것과 동일하다.
 
 `staging area`에 담겨 있는 내용을 이력으로 기록한다.
 
@@ -345,7 +344,7 @@ $ git commit -m "커밋메시지"
 
 #### 4. git status
 
-git의 현재 상태를 확인한다. 자주자주 입력해보자!
+git의 현재 상태를 확인한다. **자주자주 입력하면서 확인하는 습관을 만들어 보자!**
 
 ```bash
 $ git status
@@ -368,7 +367,7 @@ $ git remote add origin https://github.com/example/TIL.git
 ```bash
 $ git push -u origin master
 ```
-
+> 한번 push 한 이후로는 `git push` 까지만 입력해도 된다.
 - git 학습 사이트
   - [git 입문](https://backlog.com/git-tutorial/kr/intro/intro1_1.html)
   - [git 간편안내서](https://rogerdudler.github.io/git-guide/index.ko.html)

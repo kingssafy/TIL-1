@@ -6,14 +6,12 @@
 
 1. String Interpolation
 2. 파일명 바꾸기
-3. 파일 읽고 쓰기
-4. 웹스크래핑
-5. 이메일
-6. GitHub-static-website
+3. 웹스크래핑
+4. GitHub-static-website
 
 ------
 
-### 1. String Interpolation(삽입)
+### 1. String Interpolation(문자열 삽입)
 
 ```python
 # 과거
@@ -213,9 +211,7 @@ for tag in soup.select('.PM_CL_realtimeKeyword_rolling .ah_item .ah_k'):
 
 ---
 
-### 4. 이메일 (분량 상 마크다운 분리)
-
-### 5. GitHub Static Website
+### 4. GitHub Static Website
 
 - GitHub에서는 [GitHub Pages](https://pages.github.com/) 라는 호스팅 서비스를 제공하고 있는데, 이를 이용하면 개인 페이지(블로그)를 **무료**로 생성할 수 있다. [영상](<https://youtu.be/2MsN8gpT6jY>)
 
